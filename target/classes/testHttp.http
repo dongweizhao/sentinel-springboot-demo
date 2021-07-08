@@ -1,0 +1,17 @@
+GET http://127.0.0.1:8094/queryUserInfoSlowRequest
+Accept: application/json
+
+
+### 热点参数限流
+GET http://127.0.0.1:8094/loginTestParamFlo2
+Accept: application/json
+
+### 来源访问白名单
+GET http://127.0.0.1:8094/testAuthority?origin=192.168.1.1
+Accept: application/json
+
+### 来源访问白名单拒绝测试
+GET http://127.0.0.1:8094/testAuthority?origin=appB
+Accept: application/json
+
+
