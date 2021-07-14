@@ -6,6 +6,7 @@ Accept: application/json
 GET http://127.0.0.1:8094/loginTestParamFlo2
 Accept: application/json
 
+#################### 本地
 ### 来源访问白名单
 GET http://127.0.0.1:8094/testAuthority?origin=192.168.1.1
 Accept: application/json
@@ -14,4 +15,12 @@ Accept: application/json
 GET http://127.0.0.1:8094/testAuthority?origin=appB
 Accept: application/json
 
+##################### 远程
+### 来源访问白名单
+GET http://10.211.55.5:8094/testAuthority?origin=192.168.1.1
+Accept: application/json
+
+### 来源访问白名单拒绝测试
+GET http://10.211.55.5:8094/testAuthority?origin=appB
+Accept: application/json
 

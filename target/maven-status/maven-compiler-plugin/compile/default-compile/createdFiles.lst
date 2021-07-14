@@ -2,11 +2,8 @@ com/sentinel/example/service/DemoService.class
 com/sentinel/example/paramflow/ParamFlowQpsRunner$RunTask.class
 com/sentinel/example/TestApplication.class
 com/sentinel/example/web/TestController.class
-com/sentinel/example/datasource/DataSourceInitFunc$2.class
 com/sentinel/example/paramflow/ParamFlowQpsDemo.class
 com/sentinel/example/paramflow/ParamFlowQpsRunner.class
-com/sentinel/example/datasource/DataSourceInitFunc.class
-com/sentinel/example/datasource/DataSourceInitFunc$1.class
 com/sentinel/example/degrade/SlowRatioCircuitBreakerDemo.class
 com/sentinel/example/paramflow/ParamFlowQpsRunner$TimerTask.class
 com/sentinel/example/interceptor/RequestOriginParserDefinition.class

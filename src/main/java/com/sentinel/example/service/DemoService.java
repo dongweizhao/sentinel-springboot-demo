@@ -3,6 +3,7 @@ package com.sentinel.example.service;
 import com.alibaba.csp.sentinel.EntryType;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ import java.util.concurrent.TimeUnit;
  * @Date: 2021/6/30 2:55 下午
  */
 @Service
+@Slf4j
 public class DemoService {
 
     double count = 0;
@@ -100,7 +102,7 @@ public class DemoService {
 
 
     public String queryUserInfo(String userName) {
-        System.out.println("request userName: " +userName);
+        log.info("request pass userName:{} done",userName);
         return userName;
     }
 }

@@ -1,6 +1,5 @@
 package com.sentinel.example.web;
 
-import com.sentinel.example.authority.AuthorityDemo;
 import com.sentinel.example.paramflow.ParamFlowQpsRunner;
 import com.sentinel.example.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -112,6 +111,8 @@ public class TestController {
     public String queryUserInfo2(@RequestParam("userName") String userName) {
         return   demoService.queryUserInfo(userName);
     }
+
+
 
 
 

@@ -58,8 +58,9 @@ public class ParamFlowQpsDemo {
         ParamFlowRule rule = new ParamFlowRule(RESOURCE_KEY)
             .setParamIdx(0)
             .setGrade(RuleConstant.FLOW_GRADE_QPS)
+
             //.setDurationInSec(3)
-            //.setControlBehavior(RuleConstant.CONTROL_BEHAVIOR_RATE_LIMITER)
+//            .setControlBehavior(RuleConstant.CONTROL_BEHAVIOR_RATE_LIMITER)
             //.setMaxQueueingTimeMs(600)
             .setCount(5);
 
