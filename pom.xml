@@ -120,14 +120,14 @@
 <!--            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>-->
 <!--        </dependency>-->
 
-        <dependency>
-            <groupId>com.alibaba.csp</groupId>
-            <artifactId>sentinel-annotation-aspectj</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.csp</groupId>
-            <artifactId>sentinel-datasource-zookeeper</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.csp</groupId>-->
+<!--            <artifactId>sentinel-annotation-aspectj</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.csp</groupId>-->
+<!--            <artifactId>sentinel-datasource-zookeeper</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.eeeffff.hasentinel</groupId>
             <artifactId>hasentinel-web-spring-boot-starter</artifactId>
