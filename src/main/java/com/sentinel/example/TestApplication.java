@@ -1,25 +1,25 @@
 package com.sentinel.example;
 
 import com.alibaba.csp.sentinel.annotation.aspectj.SentinelResourceAspect;
-import com.eeeffff.hasentinel.web.WebConfigManager;
-import com.sentinel.example.interceptor.RequestOriginParserDefinition;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-//@ComponentScan(basePackages = {"com.sentinel.example","com.eeeffff.hasentinel"})
 public class TestApplication {
     public static void main(String[] args) {
-        WebConfigManager.setOriginParser(new RequestOriginParserDefinition());
         SpringApplication.run(TestApplication.class, args);
     }
 
+    /**基于注解限流，需要显示声明bean
+     * @description:
+     * @author: dongweizhao
+     * @date: 2022/1/29 2:55 下午
+     * @param: null
+     * @return:
+     */
     @Bean
     public SentinelResourceAspect sentinelResourceAspect() {
         return new SentinelResourceAspect();
     }
-
-
 }

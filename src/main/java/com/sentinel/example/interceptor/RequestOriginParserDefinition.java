@@ -3,7 +3,7 @@ import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.RequestOriginPars
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
-
+@Component
 public class RequestOriginParserDefinition implements RequestOriginParser {
     @Override
     public String parseOrigin(HttpServletRequest httpServletRequest) {

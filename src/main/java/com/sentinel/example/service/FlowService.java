@@ -16,14 +16,20 @@ import java.util.concurrent.TimeUnit;
  */
 @Service
 @Slf4j
-public class DemoService {
-
+public class FlowService {
     double count = 0;
     double slowRatioThreshold = 0;
     double slowRatioThresholdCount = 0;
     long failStartTime = 0;
 
-    @SentinelResource(value = "queryUserInfoSlowRequest", blockHandler = "exceptionHandler", fallback = "helloFallback")
+    /**
+     * @description:熔断降级测试
+     * @author: dongweizhao
+     * @date: 2022/1/29 3:02 下午
+     * @param:
+     * @return: java.lang.String
+     */
+    @SentinelResource(value = "queryUserInfoSlowRequest", blockHandler = "exceptionHandler", fallback = "slowRequestFallback")
     public String queryUserInfoSlowRequest() {
         long start = System.currentTimeMillis();
         ++count;
@@ -46,7 +52,7 @@ public class DemoService {
 
 
     // Fallback 函数，函数签名与原函数一致或加一个 Throwable 类型的参数.
-    public String helloFallback(long s) {
+    public String slowRequestFallback(long s) {
         return String.format("Halooooo %d", s);
     }
 
@@ -60,7 +66,6 @@ public class DemoService {
         return "Oops ";
     }
 
-
     public static void sleep(int timeMs) {
         try {
             TimeUnit.MILLISECONDS.sleep(timeMs);
@@ -69,40 +74,24 @@ public class DemoService {
         }
     }
 
+    /**
+     * @description:流量控制测试
+     * @author: dongweizhao
+     * @date: 2022/1/29 3:03 下午
+     * @param: origin
+     * @return: java.lang.String
+     */
+    @SentinelResource(value = "testFlow", entryType = EntryType.IN, blockHandler = "exceptionFlowHandler")
+    public String testFlow(String origin) {
 
-    @SentinelResource(value = "loginTestParamFlow", entryType = EntryType.IN, blockHandler = "exceptionBaseHandler")
-    public String loginTestParamFlow(String userName, String password) {
-        sleep(ThreadLocalRandom.current().nextInt(40, 60));
-        System.out.println(String.format("param:%s request pass", password));
-        return password;
-    }
-
-
-    // Block 异常处理函数，参数最后多一个 BlockException，其余与原函数一致.
-    public String exceptionBaseHandler(String userName, String password, BlockException ex) {
-//        System.out.println(String.format(
-//                "[%d] Parameter flow metrics for pass count for param <%s> is %d, block count: %d", TimeUtil.currentTimeMillis(), userName,
-//                passCountMap.get(userName).get(), blockCountMap.get(userName).get()));
-        System.out.println("request block error,param:" + password);
-        return "Oops " + password;
-    }
-
-
-    @SentinelResource(value = "testABCD",entryType = EntryType.IN,blockHandler = "exceptionAuthority")
-    public String testAuthority(String origin) {
-        System.out.println(String.format("Passed for resource testABCD, origin is %s", origin));
+        System.out.println(String.format("Passed for resource testFlow, requestDate:%s , origin is %s", LocalDateTime.now(), origin));
         return "passed";
     }
 
-    public String exceptionAuthority(String origin, BlockException ex){
-        System.out.println("request block error,param:" +origin);
+
+    public String exceptionFlowHandler(String origin, BlockException ex) {
+        System.out.println(String.format("request block error,requestDate:%s , param:%s ", LocalDateTime.now(), origin));
         return "block";
     }
 
-
-
-    public String queryUserInfo(String userName) {
-        log.info("request pass userName:{} done",userName);
-        return userName;
-    }
 }
