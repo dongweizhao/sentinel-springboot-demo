@@ -22,6 +22,14 @@ public class FlowService {
     double slowRatioThresholdCount = 0;
     long failStartTime = 0;
 
+    public String restSlowValue() {
+        count = 0;
+        slowRatioThreshold = 0;
+        slowRatioThresholdCount = 0;
+        failStartTime = 0;
+        return "success";
+    }
+
     /**
      * @description:熔断降级测试
      * @author: dongweizhao
@@ -93,5 +101,20 @@ public class FlowService {
         System.out.println(String.format("request block error,requestDate:%s , param:%s ", LocalDateTime.now(), origin));
         return "block";
     }
+
+
+    /**
+     * @description:系统自适应保护测试接口
+     * @author: dongweizhao
+     * @date: 2022/1/29 3:03 下午
+     * @param: origin
+     * @return: java.lang.String
+     */
+    public String testSysProtect(String origin) {
+
+        System.out.println(String.format("Passed for resource testSysProtect, requestDate:%s , origin is %s", LocalDateTime.now(), origin));
+        return "passed";
+    }
+
 
 }

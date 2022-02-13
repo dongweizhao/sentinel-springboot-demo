@@ -28,6 +28,20 @@ public class TestController {
     public String queryUserInfoSlowRequest() {
         return demoService.queryUserInfoSlowRequest();
     }
+
+
+    /**
+     * @description:重置自适应接口参数
+     * @author: dongweizhao
+     * @date: 2021/6/30 3:07 下午
+     * @param:
+     * @return: void
+     */
+    @GetMapping(value = "/restSlowValue")
+    public String restSlowValue() {
+        return demoService.restSlowValue();
+    }
+
     /**
      * @description:限流测试
      * @author: dongweizhao
@@ -39,6 +53,22 @@ public class TestController {
     public String testFlow(@RequestParam("origin") String origin) {
         return demoService.testFlow(origin);
     }
+
+
+    /**
+     * @description:自适应保护接口
+     * @author: dongweizhao
+     * @date: 2021/6/30 3:07 下午
+     * @param:
+     * @return: void
+     */
+    @GetMapping(value = "/testSysProtect")
+    public String testSysProtect(@RequestParam("origin") String origin) {
+        return demoService.testSysProtect(origin);
+    }
+
+
+
 
 
 
